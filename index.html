@@ -1,0 +1,2244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pi Kappa Phi - Iota Xi Chapter at UT Dallas. Leading with Exceptional Leaders. Join our brotherhood dedicated to leadership, service, and The Ability Experience.">
+    <title>Pi Kappa Phi - Iota Xi Chapter | UT Dallas</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <style>
+        /* ========================================
+           GLOBAL STYLES & RESET
+        ======================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-navy: #005596;
+            --accent-gold: #E7A614;
+            --white: #FFFFFF;
+            --dark-navy: #003d6e;
+            --overlay-navy: rgba(0, 85, 150, 0.9);
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--primary-navy);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        section {
+            min-height: 100vh;
+            padding: 100px 20px 60px;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ========================================
+           SCROLL PROGRESS BAR
+        ======================================== */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-gold), #FFD700);
+            z-index: 10000;
+            transition: width 0.1s ease;
+        }
+
+        /* ========================================
+           NAVIGATION BAR
+        ======================================== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--primary-navy);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+            z-index: 9999;
+            padding: 15px 30px;
+            transition: var(--transition-smooth);
+        }
+
+        nav.scrolled {
+            padding: 10px 30px;
+            background: rgba(0, 85, 150, 0.98);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+        .nav-logo svg {
+            height: 45px;
+            width: auto;
+            transition: var(--transition-smooth);
+        }
+
+        nav.scrolled .nav-logo svg {
+            height: 40px;
+        }
+
+        .nav-chapter {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 1px;
+        }
+
+        .nav-chapter span {
+            color: var(--accent-gold);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            position: relative;
+            padding-bottom: 5px;
+            transition: var(--transition-smooth);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: var(--accent-gold);
+            border-radius: 2px;
+            transition: var(--transition-smooth);
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* ========================================
+           HERO SECTION
+        ======================================== */
+        #home {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: var(--primary-navy);
+        }
+
+        .hero-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.05;
+            background-image:
+                repeating-linear-gradient(45deg, var(--accent-gold) 0, var(--accent-gold) 2px, transparent 2px, transparent 20px),
+                repeating-linear-gradient(-45deg, var(--accent-gold) 0, var(--accent-gold) 2px, transparent 2px, transparent 20px);
+            animation: patternMove 20s linear infinite;
+        }
+
+        @keyframes patternMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(40px, 40px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-logo {
+            width: 280px;
+            height: auto;
+            margin-bottom: 40px;
+            filter: drop-shadow(0 0 30px rgba(231, 166, 20, 0.4));
+            animation: logoGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes logoGlow {
+            0%, 100% { filter: drop-shadow(0 0 30px rgba(231, 166, 20, 0.4)); }
+            50% { filter: drop-shadow(0 0 50px rgba(231, 166, 20, 0.6)); }
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.8rem;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .hero-location {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-gold);
+            color: var(--white);
+            padding: 18px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: var(--transition-smooth);
+            box-shadow: 0 8px 25px rgba(231, 166, 20, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(231, 166, 20, 0.5);
+            background: #FFD700;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator i {
+            font-size: 2rem;
+            color: var(--accent-gold);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-15px); }
+            60% { transform: translateX(-50%) translateY(-8px); }
+        }
+
+        /* ========================================
+           SECTION HEADERS
+        ======================================== */
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--accent-gold);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--accent-gold);
+            font-weight: 600;
+            margin-top: 25px;
+        }
+
+        /* ========================================
+           ABOUT SECTION
+        ======================================== */
+        #about {
+            background: var(--primary-navy);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .about-card {
+            background: var(--white);
+            color: var(--primary-navy);
+            padding: 40px;
+            border-radius: 15px;
+            border: 3px solid var(--accent-gold);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            transition: var(--transition-smooth);
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(231, 166, 20, 0.3);
+        }
+
+        .about-card h3 {
+            color: var(--primary-navy);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .about-card p {
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .stat-card {
+            background: var(--white);
+            color: var(--primary-navy);
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: var(--transition-smooth);
+        }
+
+        .stat-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(231, 166, 20, 0.3);
+        }
+
+        .stat-icon {
+            font-size: 3rem;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--accent-gold);
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-navy);
+        }
+
+        /* ========================================
+           BROTHERHOOD SECTION
+        ======================================== */
+        #brotherhood {
+            background: var(--primary-navy);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            border: 4px solid var(--white);
+            aspect-ratio: 1/1;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 30px rgba(231, 166, 20, 0.6);
+            border-color: var(--accent-gold);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--overlay-navy);
+            padding: 20px;
+            transform: translateY(100%);
+            transition: var(--transition-smooth);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-caption {
+            font-size: 1rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .view-more-btn {
+            display: block;
+            margin: 0 auto;
+            background: transparent;
+            color: var(--accent-gold);
+            border: 3px solid var(--accent-gold);
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .view-more-btn:hover {
+            background: var(--accent-gold);
+            color: var(--white);
+            transform: scale(1.05);
+        }
+
+        /* ========================================
+           LIGHTBOX
+        ======================================== */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            border-radius: 10px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .lightbox-close,
+        .lightbox-prev,
+        .lightbox-next {
+            position: absolute;
+            background: var(--accent-gold);
+            color: var(--white);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-close {
+            top: 20px;
+            right: 20px;
+        }
+
+        .lightbox-prev {
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .lightbox-next {
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .lightbox-close:hover,
+        .lightbox-prev:hover,
+        .lightbox-next:hover {
+            background: var(--primary-navy);
+            transform: scale(1.1);
+        }
+
+        .lightbox-next:hover {
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .lightbox-prev:hover {
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        /* ========================================
+           PHILANTHROPY SECTION
+        ======================================== */
+        #philanthropy {
+            background: var(--primary-navy);
+            position: relative;
+        }
+
+        #philanthropy::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--accent-gold);
+        }
+
+        .philanthropy-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .abex-logo-container {
+            text-align: center;
+            margin: 40px 0 50px;
+            padding: 40px;
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .abex-logo-container img {
+            max-width: 100%;
+            height: auto;
+            max-height: 200px;
+        }
+
+        .stat-highlight {
+            background: var(--white);
+            color: var(--primary-navy);
+            padding: 40px;
+            border-radius: 20px;
+            border: 4px solid var(--accent-gold);
+            text-align: center;
+            margin: 40px 0;
+            box-shadow: 0 15px 50px rgba(231, 166, 20, 0.3);
+        }
+
+        .stat-highlight h3 {
+            font-size: 3.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+
+        .stat-highlight p {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .venmo-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: var(--accent-gold);
+            color: var(--white);
+            padding: 22px 50px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin: 30px 0;
+            transition: var(--transition-smooth);
+            box-shadow: 0 10px 40px rgba(231, 166, 20, 0.4);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 10px 40px rgba(231, 166, 20, 0.4); }
+            50% { transform: scale(1.05); box-shadow: 0 15px 50px rgba(231, 166, 20, 0.6); }
+        }
+
+        .venmo-button:hover {
+            background: #FFD700;
+            animation: none;
+            transform: scale(1.08);
+        }
+
+        .venmo-button i {
+            font-size: 1.8rem;
+        }
+
+        .philanthropy-description {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 35px;
+            border-radius: 15px;
+            border-left: 5px solid var(--accent-gold);
+            margin: 40px 0;
+            font-size: 1.15rem;
+            line-height: 1.8;
+        }
+
+        .carousel-container {
+            position: relative;
+            margin: 50px 0;
+            overflow: hidden;
+            border-radius: 20px;
+        }
+
+        .carousel-slides {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            aspect-ratio: 16/9;
+            background: var(--white);
+            padding: 10px;
+            border-radius: 20px;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        .carousel-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+        }
+
+        .carousel-dot {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 2px solid var(--accent-gold);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .carousel-dot.active {
+            background: var(--accent-gold);
+            transform: scale(1.3);
+        }
+
+        .secondary-btn {
+            display: inline-block;
+            background: var(--white);
+            color: var(--accent-gold);
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: var(--transition-smooth);
+            border: 3px solid var(--accent-gold);
+        }
+
+        .secondary-btn:hover {
+            background: var(--accent-gold);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(231, 166, 20, 0.4);
+        }
+
+        .philanthropy-buttons {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        /* ========================================
+           EVENTS SECTION
+        ======================================== */
+        #events {
+            background: var(--primary-navy);
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+            margin-bottom: 50px;
+        }
+
+        .event-card {
+            background: var(--white);
+            color: var(--primary-navy);
+            padding: 35px;
+            border-radius: 15px;
+            border-left: 6px solid var(--accent-gold);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+
+        .event-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 50px rgba(231, 166, 20, 0.4);
+        }
+
+        .event-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            color: var(--accent-gold);
+        }
+
+        .event-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            padding-right: 50px;
+        }
+
+        .event-date {
+            color: var(--accent-gold);
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .event-card p {
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        .past-events {
+            margin-top: 60px;
+        }
+
+        .past-events h3 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: var(--accent-gold);
+        }
+
+        .past-events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .past-event-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 12px;
+            border: 2px solid var(--accent-gold);
+            position: relative;
+            transition: var(--transition-smooth);
+        }
+
+        .past-event-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(1.03);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: var(--accent-gold);
+            color: var(--white);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .past-event-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .past-event-card p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* ========================================
+           RECRUITMENT SECTION
+        ======================================== */
+        #recruitment {
+            background: var(--primary-navy);
+        }
+
+        .recruitment-content {
+            position: relative;
+        }
+
+        #recruitment::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 2px;
+            background: var(--accent-gold);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .benefit-card {
+            background: var(--white);
+            color: var(--primary-navy);
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            transition: var(--transition-smooth);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 50px rgba(231, 166, 20, 0.4);
+        }
+
+        .benefit-icon {
+            font-size: 3.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 60px auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: var(--accent-gold);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+        }
+
+        .timeline-content {
+            background: var(--white);
+            color: var(--primary-navy);
+            padding: 30px;
+            border-radius: 15px;
+            width: calc(50% - 40px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 25px;
+            height: 25px;
+            background: var(--accent-gold);
+            border: 5px solid var(--white);
+            border-radius: 50%;
+            top: 30px;
+            z-index: 2;
+        }
+
+        .timeline-content h4 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--accent-gold);
+        }
+
+        .timeline-content p {
+            line-height: 1.6;
+        }
+
+        .testimonials {
+            margin: 60px 0;
+        }
+
+        .testimonials h3 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 50px;
+            color: var(--accent-gold);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 35px;
+            border-radius: 15px;
+            position: relative;
+            border: 2px solid var(--accent-gold);
+            transition: var(--transition-smooth);
+        }
+
+        .testimonial-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(1.03);
+        }
+
+        .quote-icon {
+            font-size: 3rem;
+            color: var(--accent-gold);
+            opacity: 0.3;
+            position: absolute;
+            top: 15px;
+            left: 20px;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin: 30px 0 20px;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--accent-gold);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .recruitment-cta {
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        /* ========================================
+           CONTACT/FOOTER SECTION
+        ======================================== */
+        #contact {
+            background: var(--dark-navy);
+            padding-bottom: 40px;
+        }
+
+        .footer-logo {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .footer-logo svg {
+            width: 80px;
+            height: auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .contact-section h3 {
+            font-size: 1.6rem;
+            margin-bottom: 25px;
+            color: var(--accent-gold);
+            text-align: center;
+        }
+
+        .leadership-list {
+            list-style: none;
+        }
+
+        .leadership-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            border-left: 3px solid var(--accent-gold);
+        }
+
+        .leadership-position {
+            color: var(--accent-gold);
+            font-weight: 700;
+            font-size: 1.05rem;
+            margin-bottom: 5px;
+        }
+
+        .leadership-name {
+            font-size: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: var(--accent-gold);
+            font-size: 2rem;
+            transition: var(--transition-smooth);
+        }
+
+        .social-links a:hover {
+            color: var(--white);
+            transform: scale(1.2);
+        }
+
+        .address {
+            text-align: center;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--accent-gold);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid var(--accent-gold);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition-smooth);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--white);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .form-error {
+            color: var(--accent-gold);
+            font-size: 0.9rem;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .form-error.show {
+            display: block;
+        }
+
+        .form-success {
+            background: var(--white);
+            color: var(--primary-navy);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+            margin-bottom: 20px;
+        }
+
+        .form-success.show {
+            display: block;
+        }
+
+        .submit-btn {
+            background: var(--accent-gold);
+            color: var(--white);
+            border: none;
+            padding: 18px 50px;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background: #FFD700;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(231, 166, 20, 0.4);
+        }
+
+        .footer-divider {
+            width: 100%;
+            height: 2px;
+            background: var(--accent-gold);
+            margin: 50px 0 30px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition-smooth);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        .copyright {
+            text-align: center;
+            color: var(--accent-gold);
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        /* ========================================
+           ANIMATIONS
+        ======================================== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ========================================
+           RESPONSIVE DESIGN
+        ======================================== */
+        @media (max-width: 1024px) {
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-content {
+                width: calc(100% - 80px);
+                margin-left: 80px !important;
+            }
+
+            .timeline-marker {
+                left: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                width: 280px;
+                height: calc(100vh - 70px);
+                background: var(--primary-navy);
+                flex-direction: column;
+                padding: 40px 20px;
+                box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
+                transition: right 0.4s ease;
+                align-items: flex-start;
+                gap: 25px;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-chapter {
+                font-size: 1.2rem;
+            }
+
+            .nav-logo svg {
+                height: 38px;
+            }
+
+            .hero-logo {
+                width: 200px;
+            }
+
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.3rem;
+            }
+
+            .hero-location {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 15px;
+            }
+
+            .benefits-grid,
+            .events-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-content {
+                width: calc(100% - 60px);
+                margin-left: 60px !important;
+            }
+
+            .lightbox-prev,
+            .lightbox-next {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .lightbox-prev {
+                left: 10px;
+            }
+
+            .lightbox-next {
+                right: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 12px 15px;
+            }
+
+            .nav-chapter {
+                font-size: 1rem;
+            }
+
+            .nav-logo {
+                gap: 10px;
+            }
+
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .cta-button {
+                padding: 15px 35px;
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .venmo-button {
+                font-size: 1.1rem;
+                padding: 18px 35px;
+            }
+
+            .about-card,
+            .stat-card,
+            .event-card,
+            .benefit-card {
+                padding: 25px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo" aria-label="Pi Kappa Phi - Iota Xi Chapter Home">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" aria-hidden="true">
+                    <!-- Shield Background -->
+                    <path d="M100 10 L180 50 L180 120 Q180 170 100 190 Q20 170 20 120 L20 50 Z"
+                          fill="#E7A614" stroke="#FFFFFF" stroke-width="3"/>
+
+                    <!-- Inner Shield -->
+                    <path d="M100 30 L160 60 L160 115 Q160 155 100 170 Q40 155 40 115 L40 60 Z"
+                          fill="#005596"/>
+
+                    <!-- Stars -->
+                    <g fill="#FFFFFF">
+                        <polygon points="60,75 62,81 68,81 63,85 65,91 60,87 55,91 57,85 52,81 58,81"/>
+                        <polygon points="100,55 102,61 108,61 103,65 105,71 100,67 95,71 97,65 92,61 98,61"/>
+                        <polygon points="140,75 142,81 148,81 143,85 145,91 140,87 135,91 137,85 132,81 138,81"/>
+                    </g>
+
+                    <!-- Greek Letters PKPhi -->
+                    <text x="100" y="130" font-family="serif" font-size="36" font-weight="bold"
+                          fill="#E7A614" text-anchor="middle" stroke="#FFFFFF" stroke-width="1">ΠΚΦ</text>
+                </svg>
+                <div class="nav-chapter">Iota <span>Xi</span></div>
+            </a>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#brotherhood" class="nav-link">Brotherhood</a></li>
+                <li><a href="#philanthropy" class="nav-link">Philanthropy</a></li>
+                <li><a href="#events" class="nav-link">Events</a></li>
+                <li><a href="#recruitment" class="nav-link">Recruitment</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+
+            <div class="hamburger" id="hamburger" aria-label="Toggle navigation menu" role="button" tabindex="0">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home">
+        <div class="hero-pattern"></div>
+        <div class="hero-content">
+            <svg class="hero-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" aria-labelledby="heroLogoTitle">
+                <title id="heroLogoTitle">Pi Kappa Phi Fraternity Logo</title>
+                <!-- Shield Background -->
+                <path d="M100 10 L180 50 L180 120 Q180 170 100 190 Q20 170 20 120 L20 50 Z"
+                      fill="#E7A614" stroke="#FFFFFF" stroke-width="4"/>
+
+                <!-- Inner Shield -->
+                <path d="M100 30 L160 60 L160 115 Q160 155 100 170 Q40 155 40 115 L40 60 Z"
+                      fill="#005596"/>
+
+                <!-- Stars -->
+                <g fill="#FFFFFF">
+                    <polygon points="60,75 62,81 68,81 63,85 65,91 60,87 55,91 57,85 52,81 58,81"/>
+                    <polygon points="100,55 102,61 108,61 103,65 105,71 100,67 95,71 97,65 92,61 98,61"/>
+                    <polygon points="140,75 142,81 148,81 143,85 145,91 140,87 135,91 137,85 132,81 138,81"/>
+                    <polygon points="60,120 62,126 68,126 63,130 65,136 60,132 55,136 57,130 52,126 58,126"/>
+                    <polygon points="140,120 142,126 148,126 143,130 145,136 140,132 135,136 137,130 132,126 138,126"/>
+                </g>
+
+                <!-- Greek Letters PKPhi -->
+                <text x="100" y="135" font-family="serif" font-size="42" font-weight="bold"
+                      fill="#E7A614" text-anchor="middle" stroke="#FFFFFF" stroke-width="2">ΠΚΦ</text>
+            </svg>
+
+            <h1 class="hero-title">Pi Kappa Phi - Iota Xi Chapter</h1>
+            <p class="hero-subtitle">Leading with Exceptional Leaders</p>
+            <p class="hero-location">University of Texas at Dallas</p>
+            <a href="#philanthropy" class="cta-button">Support Our Cause</a>
+        </div>
+
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">About Us</h2>
+            </div>
+
+            <div class="about-content">
+                <div class="about-card fade-in">
+                    <h3>Our Mission</h3>
+                    <p>Pi Kappa Phi was founded on the principle of creating exceptional leaders. The Iota Xi Chapter at UT Dallas upholds this tradition by fostering a brotherhood committed to academic excellence, leadership development, and service to others. We believe in building men of character who will make a positive impact on their communities and the world.</p>
+                </div>
+
+                <div class="about-card fade-in">
+                    <h3>Our Values</h3>
+                    <p>Our chapter is built on the pillars of Common Loyalty, Personal Responsibility, and Achievement. We cultivate an environment where brothers support each other's growth, hold themselves accountable to high standards, and strive for excellence in all endeavors. Through our commitment to The Ability Experience, we demonstrate that true leadership means empowering others.</p>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card fade-in">
+                    <i class="fas fa-users stat-icon"></i>
+                    <div class="stat-number" data-target="50">0</div>
+                    <div class="stat-label">Active Brothers</div>
+                </div>
+
+                <div class="stat-card fade-in">
+                    <i class="fas fa-dollar-sign stat-icon"></i>
+                    <div class="stat-number" data-target="7000">0</div>
+                    <div class="stat-label">Raised This Year</div>
+                </div>
+
+                <div class="stat-card fade-in">
+                    <i class="fas fa-hands-helping stat-icon"></i>
+                    <div class="stat-number" data-target="500">0</div>
+                    <div class="stat-label">Service Hours</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brotherhood Section -->
+    <section id="brotherhood">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Brotherhood</h2>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item fade-in">
+                    <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&h=600&fit=crop" alt="Brothers at formal event">
+                    <div class="gallery-overlay">
+                        <p class="gallery-caption">Spring Formal 2024</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item fade-in">
+                    <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600&h=600&fit=crop" alt="Brotherhood retreat">
+                    <div class="gallery-overlay">
+                        <p class="gallery-caption">Brotherhood Retreat</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item fade-in">
+                    <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600&h=600&fit=crop" alt="Philanthropy event">
+                    <div class="gallery-overlay">
+                        <p class="gallery-caption">Ability Experience Event</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item fade-in">
+                    <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=600&h=600&fit=crop" alt="Chapter meeting">
+                    <div class="gallery-overlay">
+                        <p class="gallery-caption">Chapter Meeting</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item fade-in">
+                    <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=600&h=600&fit=crop" alt="Social event">
+                    <div class="gallery-overlay">
+                        <p class="gallery-caption">Homecoming Celebration</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item fade-in">
+                    <img src="https://images.unsplash.com/photo-1556740758-90de374c12ad?w=600&h=600&fit=crop" alt="Community service">
+                    <div class="gallery-overlay">
+                        <p class="gallery-caption">Community Service Day</p>
+                    </div>
+                </div>
+            </div>
+
+            <button class="view-more-btn fade-in">View More Photos</button>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Close lightbox">
+            <i class="fas fa-times"></i>
+        </button>
+        <button class="lightbox-prev" id="lightboxPrev" aria-label="Previous image">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="lightbox-next" id="lightboxNext" aria-label="Next image">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        <div class="lightbox-content">
+            <img src="" alt="" id="lightboxImage">
+        </div>
+    </div>
+
+    <!-- Philanthropy Section -->
+    <section id="philanthropy">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Philanthropy</h2>
+                <p class="section-subtitle">The Ability Experience</p>
+            </div>
+
+            <div class="philanthropy-content">
+                <div class="abex-logo-container fade-in">
+                    <img src="./Abex_image.png" alt="The Ability Experience - Pi Kappa Phi's Philanthropy">
+                </div>
+
+                <div class="stat-highlight fade-in">
+                    <h3>$7,000+</h3>
+                    <p>Raised This Year</p>
+                </div>
+
+                <div class="philanthropy-buttons fade-in" style="text-align: center;">
+                    <a href="https://venmo.com/utdpikapp" class="venmo-button" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-venmo"></i>
+                        Donate via Venmo: @utdpikapp
+                    </a>
+                </div>
+
+                <div class="philanthropy-description fade-in">
+                    <p>The Ability Experience is Pi Kappa Phi's own philanthropy, dedicated to empowering people with disabilities to achieve their goals through shared experiences. Our chapter is committed to raising awareness and funds to support programs that build confident leaders and promote inclusion. Every contribution helps create life-changing experiences for people with disabilities across the nation.</p>
+                </div>
+
+                <div class="carousel-container fade-in">
+                    <div class="carousel-slides" id="carouselSlides">
+                        <div class="carousel-slide">
+                            <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=1200&h=675&fit=crop" alt="Ability Experience event">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=1200&h=675&fit=crop" alt="Fundraising event">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1200&h=675&fit=crop" alt="Community outreach">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=1200&h=675&fit=crop" alt="Volunteer work">
+                        </div>
+                    </div>
+                    <div class="carousel-controls" id="carouselControls"></div>
+                </div>
+
+                <div class="philanthropy-buttons fade-in">
+                    <a href="https://www.abilityexperience.org" class="secondary-btn" target="_blank" rel="noopener noreferrer">Learn More About The Ability Experience</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Events</h2>
+            </div>
+
+            <div class="events-grid">
+                <div class="event-card fade-in">
+                    <i class="fas fa-calendar-week event-icon"></i>
+                    <h3>Rush Week 2025</h3>
+                    <p class="event-date">January 20-25, 2025</p>
+                    <p>Join us for a week of events to learn about Pi Kappa Phi and meet the brothers. Experience what it means to be part of an exceptional brotherhood dedicated to leadership and service.</p>
+                </div>
+
+                <div class="event-card fade-in">
+                    <i class="fas fa-glass-cheers event-icon"></i>
+                    <h3>Spring Philanthropy Gala</h3>
+                    <p class="event-date">March 15, 2025</p>
+                    <p>Our signature fundraising event supporting The Ability Experience. Enjoy an evening of dinner, entertainment, and giving back to an incredible cause that changes lives.</p>
+                </div>
+
+                <div class="event-card fade-in">
+                    <i class="fas fa-mountain event-icon"></i>
+                    <h3>Brotherhood Retreat</h3>
+                    <p class="event-date">April 10, 2025</p>
+                    <p>A weekend getaway focused on strengthening bonds, leadership development, and chapter planning. An opportunity for brothers to connect and grow together.</p>
+                </div>
+            </div>
+
+            <div class="past-events fade-in">
+                <h3>Past Event Highlights</h3>
+                <div class="past-events-grid">
+                    <div class="past-event-card">
+                        <span class="featured-badge">Featured</span>
+                        <h4>Fall Kickoff 2024</h4>
+                        <p>Record attendance with 120+ students</p>
+                    </div>
+
+                    <div class="past-event-card">
+                        <span class="featured-badge">Featured</span>
+                        <h4>Founders Day Celebration</h4>
+                        <p>Honored our heritage and achievements</p>
+                    </div>
+
+                    <div class="past-event-card">
+                        <span class="featured-badge">Featured</span>
+                        <h4>War of Roses Tournament</h4>
+                        <p>Raised $3,000 for The Ability Experience</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recruitment Section -->
+    <section id="recruitment">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Why Join Pi Kappa Phi?</h2>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-card fade-in">
+                    <i class="fas fa-user-tie benefit-icon"></i>
+                    <h3>Leadership Development</h3>
+                    <p>Develop real-world leadership skills through chapter positions, campus involvement, and exclusive leadership training programs.</p>
+                </div>
+
+                <div class="benefit-card fade-in">
+                    <i class="fas fa-graduation-cap benefit-icon"></i>
+                    <h3>Academic Excellence</h3>
+                    <p>Benefit from our academic support system, study groups, and scholarship opportunities that help you excel in the classroom.</p>
+                </div>
+
+                <div class="benefit-card fade-in">
+                    <i class="fas fa-handshake benefit-icon"></i>
+                    <h3>Lifelong Brotherhood</h3>
+                    <p>Build lasting friendships and join a network of over 100,000 Pi Kapp alumni who support each other personally and professionally.</p>
+                </div>
+
+                <div class="benefit-card fade-in">
+                    <i class="fas fa-heart benefit-icon"></i>
+                    <h3>Community Impact</h3>
+                    <p>Make a difference through The Ability Experience and local community service, developing a servant leadership mindset.</p>
+                </div>
+            </div>
+
+            <div class="timeline fade-in">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h4>Week 1: Meet the Chapter</h4>
+                        <p>Attend our information sessions and meet brothers in a casual setting. Learn about our values, mission, and what makes Iota Xi special.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h4>Week 2: Experience Brotherhood</h4>
+                        <p>Participate in social events, brotherhood activities, and get a feel for our chapter culture. See what daily life as a Pi Kapp looks like.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h4>Week 3: Interview Process</h4>
+                        <p>One-on-one conversations with brothers to discuss your goals, values, and how Pi Kappa Phi can help you achieve them.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h4>Bid Day: Join the Brotherhood</h4>
+                        <p>Receive your bid and begin your journey as a Pi Kappa Phi man. Welcome to a lifetime of exceptional leadership.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonials fade-in">
+                <h3>What Our Brothers Say</h3>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <i class="fas fa-quote-left quote-icon"></i>
+                        <p class="testimonial-text">"Joining Pi Kappa Phi was the best decision I made at UT Dallas. The leadership opportunities and lifelong friends I've gained are invaluable."</p>
+                        <p class="testimonial-author">- Jake Martinez, Class of 2024</p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <i class="fas fa-quote-left quote-icon"></i>
+                        <p class="testimonial-text">"The Ability Experience opened my eyes to the impact we can have. Pi Kapp taught me that true leadership means serving others."</p>
+                        <p class="testimonial-author">- David Chen, Class of 2025</p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <i class="fas fa-quote-left quote-icon"></i>
+                        <p class="testimonial-text">"From improving my GPA through study groups to landing internships through our alumni network, Pi Kapp has been instrumental in my success."</p>
+                        <p class="testimonial-author">- Michael Johnson, Class of 2023</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="recruitment-cta fade-in">
+                <a href="#contact" class="cta-button">Start Your Journey</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact/Footer Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="footer-logo fade-in">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" aria-labelledby="footerLogoTitle">
+                    <title id="footerLogoTitle">Pi Kappa Phi Fraternity Logo</title>
+                    <path d="M100 10 L180 50 L180 120 Q180 170 100 190 Q20 170 20 120 L20 50 Z"
+                          fill="#E7A614" stroke="#FFFFFF" stroke-width="3"/>
+                    <path d="M100 30 L160 60 L160 115 Q160 155 100 170 Q40 155 40 115 L40 60 Z"
+                          fill="#005596"/>
+                    <g fill="#FFFFFF">
+                        <polygon points="60,75 62,81 68,81 63,85 65,91 60,87 55,91 57,85 52,81 58,81"/>
+                        <polygon points="100,55 102,61 108,61 103,65 105,71 100,67 95,71 97,65 92,61 98,61"/>
+                        <polygon points="140,75 142,81 148,81 143,85 145,91 140,87 135,91 137,85 132,81 138,81"/>
+                    </g>
+                    <text x="100" y="130" font-family="serif" font-size="36" font-weight="bold"
+                          fill="#E7A614" text-anchor="middle" stroke="#FFFFFF" stroke-width="1">ΠΚΦ</text>
+                </svg>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-section fade-in">
+                    <h3>Leadership Board</h3>
+                    <ul class="leadership-list">
+                        <li class="leadership-item">
+                            <div class="leadership-position">President</div>
+                            <div class="leadership-name">Contact via form</div>
+                        </li>
+                        <li class="leadership-item">
+                            <div class="leadership-position">Vice President</div>
+                            <div class="leadership-name">Contact via form</div>
+                        </li>
+                        <li class="leadership-item">
+                            <div class="leadership-position">Recruitment Chair</div>
+                            <div class="leadership-name">Contact via form</div>
+                        </li>
+                        <li class="leadership-item">
+                            <div class="leadership-position">Philanthropy Chair</div>
+                            <div class="leadership-name">Contact via form</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="contact-section fade-in">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </div>
+                    <div class="address">
+                        <p><strong>University of Texas at Dallas</strong></p>
+                        <p>800 W Campbell Rd</p>
+                        <p>Richardson, TX 75080</p>
+                    </div>
+                </div>
+
+                <div class="contact-section fade-in">
+                    <h3>Get In Touch</h3>
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-success" id="formSuccess">
+                            Thank you for your message! We'll get back to you soon.
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                            <div class="form-error" id="nameError">Please enter your name</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                            <div class="form-error" id="emailError">Please enter a valid email</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                            <div class="form-error" id="messageError">Please enter a message</div>
+                        </div>
+
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer-divider"></div>
+
+            <div class="footer-links fade-in">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#brotherhood">Brotherhood</a>
+                <a href="#philanthropy">Philanthropy</a>
+                <a href="#events">Events</a>
+                <a href="#recruitment">Recruitment</a>
+                <a href="#contact">Contact</a>
+            </div>
+
+            <p class="copyright">&copy; 2025 Pi Kappa Phi - Iota Xi Chapter. All rights reserved.</p>
+        </div>
+    </section>
+
+    <script>
+        // ========================================
+        // SCROLL PROGRESS BAR
+        // ========================================
+        const scrollProgress = document.getElementById('scrollProgress');
+
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            scrollProgress.style.width = scrolled + '%';
+        });
+
+        // ========================================
+        // NAVIGATION SCROLL EFFECT & ACTIVE LINKS
+        // ========================================
+        const navbar = document.getElementById('navbar');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('section');
+
+        window.addEventListener('scroll', () => {
+            // Navbar scroll effect
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            // Active section highlighting
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // ========================================
+        // HAMBURGER MENU
+        // ========================================
+        const hamburger = document.getElementById('hamburger');
+        const navLinksContainer = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinksContainer.classList.toggle('active');
+        });
+
+        // Keyboard accessibility for hamburger
+        hamburger.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                hamburger.classList.toggle('active');
+                navLinksContainer.classList.toggle('active');
+            }
+        });
+
+        // Close mobile menu when clicking a link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinksContainer.classList.remove('active');
+            });
+        });
+
+        // ========================================
+        // ANIMATED COUNTERS
+        // ========================================
+        const counters = document.querySelectorAll('.stat-number');
+        let counterAnimated = false;
+
+        const animateCounters = () => {
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                const duration = 2000;
+                const increment = target / (duration / 16);
+                let current = 0;
+
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        counter.textContent = Math.ceil(current).toLocaleString();
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = target.toLocaleString() + (counter.parentElement.querySelector('.stat-label').textContent.includes('Raised') ? '' : '+');
+                    }
+                };
+
+                updateCounter();
+            });
+        };
+
+        // ========================================
+        // INTERSECTION OBSERVER FOR FADE-IN ANIMATIONS
+        // ========================================
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+
+                    // Trigger counter animation when stats section is visible
+                    if (entry.target.classList.contains('stat-card') && !counterAnimated) {
+                        counterAnimated = true;
+                        animateCounters();
+                    }
+                }
+            });
+        }, observerOptions);
+
+        const fadeElements = document.querySelectorAll('.fade-in');
+        fadeElements.forEach(el => observer.observe(el));
+
+        // ========================================
+        // LIGHTBOX GALLERY
+        // ========================================
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightboxImage');
+        const lightboxClose = document.getElementById('lightboxClose');
+        const lightboxPrev = document.getElementById('lightboxPrev');
+        const lightboxNext = document.getElementById('lightboxNext');
+        let currentImageIndex = 0;
+        const images = Array.from(galleryItems).map(item => ({
+            src: item.querySelector('img').src,
+            alt: item.querySelector('img').alt
+        }));
+
+        galleryItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                currentImageIndex = index;
+                showLightboxImage();
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        const showLightboxImage = () => {
+            lightboxImage.src = images[currentImageIndex].src;
+            lightboxImage.alt = images[currentImageIndex].alt;
+        };
+
+        lightboxClose.addEventListener('click', closeLightbox);
+
+        lightboxPrev.addEventListener('click', () => {
+            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            showLightboxImage();
+        });
+
+        lightboxNext.addEventListener('click', () => {
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            showLightboxImage();
+        });
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close lightbox on background click
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // Keyboard navigation for lightbox
+        document.addEventListener('keydown', (e) => {
+            if (lightbox.classList.contains('active')) {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') lightboxPrev.click();
+                if (e.key === 'ArrowRight') lightboxNext.click();
+            }
+        });
+
+        // ========================================
+        // CAROUSEL
+        // ========================================
+        const carouselSlides = document.getElementById('carouselSlides');
+        const carouselControls = document.getElementById('carouselControls');
+        const slides = carouselSlides.querySelectorAll('.carousel-slide');
+        let currentSlide = 0;
+
+        // Create dots
+        slides.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('carousel-dot');
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(index));
+            carouselControls.appendChild(dot);
+        });
+
+        const dots = carouselControls.querySelectorAll('.carousel-dot');
+
+        const goToSlide = (index) => {
+            currentSlide = index;
+            carouselSlides.style.transform = `translateX(-${currentSlide * 100}%)`;
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentSlide);
+            });
+        };
+
+        // Auto-advance carousel
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % slides.length;
+            goToSlide(currentSlide);
+        }, 5000);
+
+        // ========================================
+        // CONTACT FORM VALIDATION
+        // ========================================
+        const contactForm = document.getElementById('contactForm');
+        const formSuccess = document.getElementById('formSuccess');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('name');
+            const email = document.getElementById('email');
+            const message = document.getElementById('message');
+
+            const nameError = document.getElementById('nameError');
+            const emailError = document.getElementById('emailError');
+            const messageError = document.getElementById('messageError');
+
+            let isValid = true;
+
+            // Clear previous errors
+            nameError.classList.remove('show');
+            emailError.classList.remove('show');
+            messageError.classList.remove('show');
+
+            // Validate name
+            if (name.value.trim() === '') {
+                nameError.classList.add('show');
+                isValid = false;
+            }
+
+            // Validate email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email.value.trim())) {
+                emailError.classList.add('show');
+                isValid = false;
+            }
+
+            // Validate message
+            if (message.value.trim() === '') {
+                messageError.classList.add('show');
+                isValid = false;
+            }
+
+            if (isValid) {
+                // Show success message
+                formSuccess.classList.add('show');
+
+                // Reset form
+                contactForm.reset();
+
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    formSuccess.classList.remove('show');
+                }, 5000);
+            }
+        });
+
+        // ========================================
+        // SMOOTH SCROLL WITH OFFSET
+        // ========================================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+
+                if (targetSection) {
+                    const offsetTop = targetSection.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // ========================================
+        // FOCUS STATES FOR ACCESSIBILITY
+        // ========================================
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+                document.body.classList.add('user-is-tabbing');
+            }
+        });
+
+        document.addEventListener('mousedown', () => {
+            document.body.classList.remove('user-is-tabbing');
+        });
+    </script>
+</body>
+</html>
